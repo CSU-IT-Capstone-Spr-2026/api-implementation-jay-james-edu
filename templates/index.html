@@ -96,6 +96,7 @@
             display: flex;
             gap: 10px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -108,6 +109,7 @@
             text-decoration: none;
             display: inline-block;
             font-size: 1em;
+            transition: background-color 0.3s;
         }
 
         .btn:hover {
@@ -117,6 +119,16 @@
         .btn:disabled {
             background-color: #ccc;
             cursor: not-allowed;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
         }
 
         footer {
@@ -137,22 +149,29 @@
     </style>
 </head>
 
+
 <body>
     <header>
         <h1>XKCD Comic Viewer</h1>
         <p class="subtitle">A simple viewer for XKCD comics using the XKCD API</p>
     </header>
 
-    <main>
+     <main>
+
+        <div class="navigation">
+            <a href="/" class="btn">Latest Comic</a>
+            <a href="/random" class="btn btn-secondary">Random Comic</a>
+        </div>
+
         {% if error %}
-        <!-- Display error message if something went wrong -->
+
         <div class="error-message">
             <strong>Error:</strong> {{ error }}
         </div>
         {% endif %}
 
         {% if comic %}
-        <!-- Display the comic if we successfully fetched it -->
+
         <div class="comic-container">
             <h2 class="comic-title">{{ comic.title }}</h2>
             <p class="comic-number">Comic #{{ comic.num }}</p>
@@ -166,13 +185,23 @@
             <p class="comic-date">
                 Published: {{ comic.month }}/{{ comic.day }}/{{ comic.year }}
             </p>
-            <!-- TODO: Add any buttons for navigation, random, or form to fetch comics -->
+
+            <div class="navigation">
+                <a href="/prev/{{ comic.num }}" class="btn" {% if comic.num <= 1 %}disabled{% endif %}>← Previous</a>
+                <a href="/random" class="btn btn-secondary">Random</a>
+                <a href="/next/{{ comic.num }}" class="btn" {% if comic.num >= 3200 %}disabled{% endif %}>Next →</a>
+            </div>
         </div>
         {% endif %}
     </main>
+
     <footer>
         <p>Comics from <a href="https://xkcd.com" target="_blank">xkcd.com</a> by Randall Munroe</p>
         <p>Created for IT Capstone - Week 4 Assignment</p>
+        <p style="margin-top: 10px; font-size: 0.8em;">
+            <a href="/">Home</a> | 
+            <a href="/random">Random Comic</a>
+        </p>
     </footer>
 </body>
 
