@@ -1,16 +1,15 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/zN2AskmG)
 # XKCD Comic Viewer
 
-[Add your 2-3 sentence description of what your application does here]
+This is a simple web application that allows users to view comics from XKCD, a popular webcomic by Randall Munroe. And this uses the official XKCD API to fetch and display comics.
 
 ## Features Implemented
 
-Check off the features you implemented (must have at least 4 and 2 are implemeted for you already):
+Check off the features you implemented:
 
 - [X] Feature #1: Display the Latest Comic
 - [X] Feature #2: Display a Specific Comic by Number
-- [ ] Feature #3: Random Comic Button
-- [ ] Feature #4: Navigation (Previous/Next)
+- [X] Feature #3: Random Comic Button
+- [X] Feature #4: Navigation (Previous/Next)
 - [ ] Feature #5: Search by Comic Number Form
 - [ ] Feature #6: Display Multiple Recent Comics
 
@@ -48,22 +47,21 @@ Check off the features you implemented (must have at least 4 and 2 are implemete
 
 5. Open your web browser and go to:
    ```
-   http://localhost:5000
+   http://localhost:5001
    ```
 
 ## Usage
 
-[Explain how to use your application - what can users do? What buttons should they click?]
+View the Latest Comic:
+When you first open the application, it automatically displays the most recent XKCD comic.
+
+Get a Random Comic:
+Click the "Random Comic" button to instantly jump to a randomly selected comic from the entire XKCD archive.
 
 ## Screenshots
+<img width="1346" height="1353" alt="API 1" src="https://github.com/user-attachments/assets/2afeb534-939d-4d6d-a180-1419cd0aa53d" />
+<img width="1305" height="1644" alt="API 2" src="https://github.com/user-attachments/assets/2acdc6aa-a804-4ded-98f1-ede17172fe11" />
 
-[Add screenshots of your application here - you can drag and drop images into GitHub or use Markdown image syntax]
-
-Example:
-```
-![Latest Comic View](screenshots/latest-comic.png)
-![Search Feature](screenshots/search.png)
-```
 
 ## API Endpoints Used
 
@@ -72,15 +70,8 @@ Example:
 
 ## Challenges and Solutions
 
-[Write 2-3 paragraphs about:]
-- What challenges did you face while working on this assignment?
-- How did you solve them?
-- What did you learn about APIs?
-
-## Future Improvements
-
-[Optional: What would you add if you had more time?]
+ I learned that APIs have specific endpoints (like /info.0.json) that return structured JSON data, and understanding this structure is crucial for properly displaying the information. The XKCD API taught me about API rate limiting considerations even though it's a free API, making too many requests could potentially overload the server, which is why I implemented caching for the latest comic number. Also in this case, I did have to change the port number as I had an service that I forgot about running on 5000. But as soon I change the number, the website immediately popped up.
 
 ## Author
 
-[Your name]
+James Jay
